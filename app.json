@@ -1,0 +1,17 @@
+{
+  "name": "react-only",
+  "displayName": "react-only",
+  "expo": {
+    "name": "react-only",
+    "slug": "expo-template-bare",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
