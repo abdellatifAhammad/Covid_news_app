@@ -17,6 +17,7 @@ import {
   useDimensions,
   useDeviceOrientation,
 } from "@react-native-community/hooks";
+import Card from "./components/Card";
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
   web: `testss`,
@@ -26,12 +27,12 @@ const instructions = Platform.select({
 export default function App() {
   const { landscape } = useDeviceOrientation();
   return (
-    <View style={styles.container}>
-      <View style={landscape ? styles.fullstyles : styles.box}>
-        <Text style={styles.navText}>Covid In Morocco</Text>
+    <>
+      <View style={styles.container}>
+        <Card></Card>
+        <View>{/* <Text>the state of Morocco at this time</Text> */}</View>
       </View>
-      <View>{/* <Text>the state of Morocco at this time</Text> */}</View>
-    </View>
+    </>
   );
 }
 
