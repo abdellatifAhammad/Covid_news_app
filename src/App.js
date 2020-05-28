@@ -17,7 +17,8 @@ import {
   useDimensions,
   useDeviceOrientation,
 } from "@react-native-community/hooks";
-import Card from "./components/Card";
+import Icon from "react-native-vector-icons/Feather";
+// ;
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
   web: `testss`,
@@ -29,8 +30,31 @@ export default function App() {
   return (
     <>
       <View style={styles.container}>
-        <Card></Card>
-        <View>{/* <Text>the state of Morocco at this time</Text> */}</View>
+        <View style={styles.box}></View>
+        <View style={styles.welcome}>
+          <Text style={styles.covid}>Covid 19</Text>
+        </View>
+        <View style={styles.news}>
+          <Text style={styles.newsText}>Covid news </Text>
+          <Icon
+            name="activity"
+            style={{ margin: 5, paddingLeft: 5 }}
+            color="white"
+            size={20}
+          ></Icon>
+        </View>
+        <View style={styles.card}>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.cardText}>
+              stay at home and don't go out its not for you ,the live have a lot
+              of price
+            </Text>
+            <Image
+              style={styles.cardImg}
+              source={require("./assets/img/covid-male.png")}
+            ></Image>
+          </View>
+        </View>
       </View>
     </>
   );
@@ -39,9 +63,40 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#1b2135ff",
     paddingTop: StatusBar.currentHeight,
-    // backgroundColor: "white",
+  },
+  cardImg: {
+    padding: 15,
+    width: 126,
+    height: 114,
+    margin: 15,
+  },
+  cardText: {
+    color: "#ffffff",
+    fontFamily: "amiri",
+    fontSize: 16,
+    padding: 5,
+    fontWeight: "300",
+  },
+  card: {
+    backgroundColor: "#24354F",
+    width: "90%",
+    height: "25%",
+    marginLeft: "5%",
+    borderRadius: 10,
+  },
+  newsText: {
+    color: "#ffffff",
+    fontFamily: "amiri",
+    fontSize: 20,
+    fontWeight: "300",
+  },
+  news: {
+    marginTop: "22%",
+    padding: 8,
+    marginLeft: 2,
+    flexDirection: "row",
   },
   box: {
     width: "100%",
@@ -53,10 +108,21 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "#F99D80",
   },
-  welcome: {
-    fontSize: 20,
+  covid: {
+    color: "#ffffff",
+    fontSize: 32,
     textAlign: "center",
-    margin: 10,
+    marginTop: "5%",
+    fontWeight: "600",
+    fontStyle: "bold",
+    fontFamily: "amiri",
+  },
+  welcome: {
+    width: "100%",
+    height: "15%",
+    top: "6%",
+    position: "absolute",
+    backgroundColor: "#F99D80",
   },
   instructions: {
     textAlign: "center",
