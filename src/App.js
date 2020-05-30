@@ -13,6 +13,8 @@ import {
   Text,
   View,
   Image,
+  ImageBackground,
+  ActivityIndicator,
 } from "react-native";
 import {
   useDimensions,
@@ -21,6 +23,9 @@ import {
 import Icon from "react-native-vector-icons/Feather";
 import { Svg, Stop, LinearGradient, Defs, Path } from "react-native-svg";
 import { ScrollView } from "react-native-gesture-handler";
+import Chart from "./components/Chart";
+import { LineChart } from "react-native-chart-kit";
+import Pie from "./components/PieChart";
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
   web: `testss`,
@@ -48,6 +53,7 @@ const Data = [
 ];
 function Item({ text, tag }) {
   const width = useDimensions().screen.width;
+
   return (
     <View
       style={{
@@ -88,7 +94,7 @@ export default function App() {
         backgroundColor="#FFA374"
         barStyle={"light-content"}
       ></StatusBar>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View>
           <View>
             <Svg
@@ -133,12 +139,42 @@ export default function App() {
         <View>
           <FlatList
             horizontal={true}
+            showsHorizontalScrollIndicator={false}
             data={Data}
             renderItem={({ item }) => <Item text={item.text} tag={item.tag} />}
             keyExtractor={(item) => item.id}
           />
         </View>
-        <View></View>
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
+          <Text style={styles.cases}>Recovered cases </Text>
+          <Icon
+            style={{ alignContent: "center", marginVertical: 14 }}
+            name="smile"
+            color="#ffffff"
+            size={16}
+          ></Icon>
+        </View>
+        <Chart width={width}></Chart>
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
+          <Text style={styles.cases}>Summury Of Cases in Morocco </Text>
+          <Icon
+            style={{ alignContent: "center", marginVertical: 14 }}
+            name="pie-chart"
+            color="#ffffff"
+            size={16}
+          ></Icon>
+        </View>
+       
+          <Pie width={width}></Pie>
+        
       </ScrollView>
     </>
   );
@@ -149,6 +185,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1b2135ff",
     // paddingTop: StatusBar.currentHeight,
+  },
+  cases: {
+    fontSize: 16,
+    padding: 10,
+    color: "#ffffff",
   },
   cardImg: {
     alignContent: "center",
