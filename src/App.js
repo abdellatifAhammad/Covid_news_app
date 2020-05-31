@@ -1,20 +1,11 @@
 import * as React from "react";
 import {
-  Platform,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  TouchableHighlight,
   StyleSheet,
-  TouchableNativeFeedback,
   StatusBar,
   FlatList,
-  Button,
-  Alert,
   Text,
   View,
   Image,
-  ImageBackground,
-  ActivityIndicator,
 } from "react-native";
 import {
   useDimensions,
@@ -24,70 +15,12 @@ import Icon from "react-native-vector-icons/Feather";
 import { Svg, Stop, LinearGradient, Defs, Path } from "react-native-svg";
 import { ScrollView } from "react-native-gesture-handler";
 import Chart from "./components/Chart";
-import { LineChart } from "react-native-chart-kit";
 import Pie from "./components/PieChart";
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  web: `testss`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
-const Data = [
-  {
-    id: "first",
-    text:
-      "stay at home and don't go out its not for you ,the live have a lot \n of price",
-    tag: "#Stay_at_home",
-  },
-  {
-    id: "second",
-    text:
-      "stay at home and don't go out its not for you ,the live have a lot \n of price",
-    tag: "#Stay_at_home",
-  },
-  {
-    id: "third",
-    text:
-      "stay at home and don't go out its not for you ,the live have a lot \n of price",
-    tag: "#Stay_at_home",
-  },
-];
-function Item({ text, tag }) {
-  const width = useDimensions().screen.width;
-
-  return (
-    <View
-      style={{
-        backgroundColor: "#24354F",
-        width: width - 20,
-        height: width * 0.45,
-        paddingBottom: 10,
-        marginLeft: 10,
-        borderRadius: 10,
-        marginVertical: 8,
-        marginHorizontal: 16,
-      }}
-    >
-      <View style={{ flexDirection: "row" }}>
-        <Text style={styles.cardText}>{text}</Text>
-        <View>
-          <Image
-            style={styles.cardImg}
-            source={require("./assets/img/covid-male.png")}
-          ></Image>
-        </View>
-      </View>
-      <View style={styles.badge}>
-        <Text style={{ color: "#fff", padding: 2, textAlign: "center" }}>
-          {tag}
-        </Text>
-      </View>
-    </View>
-  );
-}
-
+import Card from "./components/Card";
 export default function App() {
   const { landscape } = useDeviceOrientation();
   const width = useDimensions().screen.width;
+
   return (
     <>
       <StatusBar
@@ -136,15 +69,7 @@ export default function App() {
             ></Icon>
           </View>
         </View>
-        <View>
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={Data}
-            renderItem={({ item }) => <Item text={item.text} tag={item.tag} />}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+        <Card></Card>
         <View
           style={{
             flexDirection: "row",
@@ -172,9 +97,8 @@ export default function App() {
             size={16}
           ></Icon>
         </View>
-       
-          <Pie width={width}></Pie>
-        
+
+        <Pie width={width}></Pie>
       </ScrollView>
     </>
   );

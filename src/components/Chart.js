@@ -39,6 +39,7 @@ class Chart extends Component {
       })
       .catch((error) => console.log(error)); //to catch the errors if any
   }
+
   render() {
     return (
       <View>
@@ -57,25 +58,15 @@ class Chart extends Component {
 
               datasets: [
                 {
-                  data: !this.state.loading
-                    ? [
-                        this.state.chartData[0].Recovered,
-                        this.state.chartData[1].Recovered,
-                        this.state.chartData[2].Recovered,
-                        this.state.chartData[3].Recovered,
-                        this.state.chartData[4].Recovered,
-                        this.state.chartData[5].Recovered,
-                        this.state.chartData[6].Recovered,
-                      ]
-                    : [
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                        Math.random() * 100,
-                      ],
+                  data: [
+                    this.state.chartData[0].Recovered,
+                    this.state.chartData[1].Recovered,
+                    this.state.chartData[2].Recovered,
+                    this.state.chartData[3].Recovered,
+                    this.state.chartData[4].Recovered,
+                    this.state.chartData[5].Recovered,
+                    this.state.chartData[6].Recovered,
+                  ],
                 },
               ],
             }}
