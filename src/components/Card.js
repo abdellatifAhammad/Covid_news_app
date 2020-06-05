@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  Image,
   FlatList,
   ActivityIndicator,
   StyleSheet,
@@ -60,9 +61,14 @@ function Item({ text, tag, img, key }) {
           <Image
             fadeDuration={3000}
             // style={styles.cardImg}
-            source={{
+            style={{
+              alignContent: "center",
               width: 126,
               height: 114,
+              marginRight: 15,
+              marginTop: 12,
+            }}
+            source={{
               uri:
                 "https://aslanakbi.000webhostapp.com/wp-content/uploads/2020/05/covid-male.png",
             }}
@@ -97,7 +103,7 @@ class Card extends Component {
       });
   };
   componentDidMount() {
-    fetch("https://aslanakbi.000webhostapp.com/wp-json/wp/v2/posts")
+    fetch("https://aslanakbi.000webhostapp.com/index.php/wp-json/wp/v2/posts")
       .then((response) => response.json())
       .then((responseJson) => {
         var test = [];
@@ -118,9 +124,6 @@ class Card extends Component {
             ],
             loading: false,
           });
-          console.log("====================================");
-          console.log(this.state.data);
-          console.log("====================================");
         });
       })
       .catch((error) => console.log(error)); //to catch the errors if any
@@ -137,7 +140,7 @@ class Card extends Component {
             renderItem={({ item }) => (
               <Item text={item.content} tag={item.title} img={item.img} />
             )}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.index.toString()}
           />
         ) : (
           <ActivityIndicator size="large" color="#fffff" />
