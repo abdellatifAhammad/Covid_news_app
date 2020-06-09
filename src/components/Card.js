@@ -46,7 +46,7 @@ function Item({ text, tag, img, key }) {
       style={{
         backgroundColor: "#24354F",
         width: width - 20,
-        height: width * 0.45,
+        // height: width * 0.45,
         paddingBottom: 10,
         marginLeft: 10,
         borderRadius: 10,
@@ -69,8 +69,7 @@ function Item({ text, tag, img, key }) {
               marginTop: 12,
             }}
             source={{
-              uri:
-                "https://aslanakbi.000webhostapp.com/wp-content/uploads/2020/05/covid-male.png",
+              uri: img,
             }}
           ></Image>
         </View>
@@ -116,7 +115,7 @@ class Card extends Component {
                 title: item.title.rendered,
                 content: item.excerpt.rendered.split("<p>")[1].split("</p>")[0],
                 media: item.featured_media,
-                img: responseJson[0].content.rendered
+                img: responseJson[index].content.rendered
                   .split("src=")[1]
                   .split("alt")[0]
                   .split('"')[1],
