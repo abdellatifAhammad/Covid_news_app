@@ -84,15 +84,29 @@ export default function App() {
             size={16}
           ></Icon>
         </View>
-        <View style={{ flexDirection: "row", marginHorizontal: 20 }}>
+        <View style={{ flexDirection: "row", marginHorizontal: 10 }}>
           <View
             style={{
-              margin: "12",
+              width: width / 2 - 20,
+              backgroundColor: "#24354F",
+              borderRadius: 4,
+              marginRight: 20,
+            }}
+          >
+            <Text style={{ color: "#fff", fontSize: 30, textAlign: "center" }}>
+              2991
+            </Text>
+          </View>
+          <View
+            style={{
+              width: width / 2 - 20,
               backgroundColor: "#24354F",
               borderRadius: 4,
             }}
           >
-            <Text style={{ color: "#fff", fontSize: 30 }}>2991</Text>
+            <Text style={{ color: "#fff", fontSize: 30, textAlign: "center" }}>
+              20
+            </Text>
           </View>
         </View>
         <View
