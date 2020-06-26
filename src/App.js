@@ -87,33 +87,12 @@ export default function App() {
         <View style={{ flexDirection: "row", marginHorizontal: 20 }}>
           <View
             style={{
-              overflow: "hidden",
-              width: width / 2 - 30,
-              backgroundColor: "white",
-              height: width / 3 + 70,
-
+              margin: "12",
+              backgroundColor: "#24354F",
               borderRadius: 4,
             }}
           >
-            <ImageBackground
-              style={{ width: "100%", height: "100%", borderRadius: 4 }}
-              source={require("./assets/img/1.jpg")}
-            ></ImageBackground>
-          </View>
-          <View
-            style={{
-              overflow: "hidden",
-              width: width / 2 - 30,
-              backgroundColor: "white",
-              height: width / 3 + 70,
-              marginLeft: 10,
-              borderRadius: 4,
-            }}
-          >
-            <ImageBackground
-              style={{ width: "100%", height: "100%", borderRadius: 4 }}
-              source={require("./assets/img/5.jpg")}
-            ></ImageBackground>
+            <Text style={{ color: "#fff", fontSize: 30 }}>2991</Text>
           </View>
         </View>
         <View
@@ -143,7 +122,6 @@ export default function App() {
             size={16}
           ></Icon>
         </View>
-
         <Pie width={width}></Pie>
       </ScrollView>
     </>
