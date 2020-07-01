@@ -5,12 +5,16 @@ import {
   Image,
   FlatList,
   ActivityIndicator,
+  TouchableOpacity,
   StyleSheet,
+  Modal,
+  Button,
 } from "react-native";
 import {
   useDimensions,
   useDeviceOrientation,
 } from "@react-native-community/hooks";
+// import { Button } from "react-native-vector-icons/Feather";
 function Item({ text, tag, img, key }) {
   const width = useDimensions().screen.width;
   const styles = StyleSheet.create({
@@ -90,11 +94,16 @@ class Card extends Component {
       chartData: [],
       data: [],
       crads: [],
+      modalVisible: false,
+      postTitle: "",
     };
   }
+  setModalVisible = (visible, title) => {
+    this.setState({ modalVisible: visible, postTitle: title });
+  };
+
   getImgLink = (id) => {
     console.log(id);
-
     fetch("https://aslanakbi.000webhostapp.com/wp-json/wp/v2/media/" + id + "/")
       .then((response) => response.json())
       .then((img) => {
@@ -132,15 +141,34 @@ class Card extends Component {
     return (
       <View>
         {!this.state.loading ? (
-          <FlatList
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            data={this.state.data}
-            renderItem={({ item }) => (
-              <Item text={item.content} tag={item.title} img={item.img} />
-            )}
-            keyExtractor={(item) => item.index.toString()}
-          />
+          <>
+            <Modal
+              animationType={"slide"}
+              transparent={false}
+              visible={this.state.modalVisible}
+              onRequestClose={() => {
+                setModalVisible(false);
+              }}
+            >
+              <View style={{ flex: 1, backgroundColor: "#1b2135ff" }}>
+                <Text style={{ color: "white" }}>{this.state.postTitle}</Text>
+              </View>
+            </Modal>
+
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={this.state.data}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  onPress={() => this.setModalVisible(true, item.title)}
+                >
+                  <Item text={item.content} tag={item.title} img={item.img} />
+                </TouchableOpacity>
+              )}
+              keyExtractor={(item) => item.index.toString()}
+            />
+          </>
         ) : (
           <ActivityIndicator size="large" color="#fffff" />
         )}

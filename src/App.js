@@ -21,13 +21,14 @@ import Card from "./components/Card";
 export default function App() {
   const { landscape } = useDeviceOrientation();
   const width = useDimensions().screen.width;
-
+  const [modalVisible, setModalVisible] = React.useState(false);
   return (
     <>
       <StatusBar
         backgroundColor="#FFA374"
         barStyle={"light-content"}
       ></StatusBar>
+
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View>
           <View>
