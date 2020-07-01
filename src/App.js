@@ -76,7 +76,7 @@ export default function App() {
             flexDirection: "row",
           }}
         >
-          <Text style={styles.cases}>Generale numbers </Text>
+          <Text style={styles.cases}>Generale advices </Text>
           <Icon
             style={{ alignContent: "center", marginVertical: 14 }}
             name="bar-chart-2"
@@ -93,9 +93,21 @@ export default function App() {
               marginRight: 20,
             }}
           >
-            <Text style={{ color: "#fff", fontSize: 30, textAlign: "center" }}>
-              2991
+            <Text style={{ color: "#fff", fontSize: 18, textAlign: "center" }}>
+              clean your hands all the time
             </Text>
+            <Image
+              fadeDuration={1000}
+              // style={styles.cardImg}
+              style={{
+                alignContent: "center",
+                width: 126,
+                height: 114,
+                marginLeft: 15,
+                marginTop: 12,
+              }}
+              source={require("./assets/img/Antiseptic.png")}
+            ></Image>
           </View>
           <View
             style={{
@@ -104,9 +116,21 @@ export default function App() {
               borderRadius: 4,
             }}
           >
-            <Text style={{ color: "#fff", fontSize: 30, textAlign: "center" }}>
-              20
+            <Text style={{ color: "#fff", fontSize: 18, textAlign: "center" }}>
+              keep using mask when you are going out
             </Text>
+            <Image
+              fadeDuration={1000}
+              // style={styles.cardImg}
+              style={{
+                alignContent: "center",
+                width: 126,
+                height: 114,
+                marginLeft: 15,
+                marginTop: 12,
+              }}
+              source={require("./assets/img/Mask.png")}
+            ></Image>
           </View>
         </View>
         <View
