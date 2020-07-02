@@ -14,6 +14,9 @@ import {
   useDimensions,
   useDeviceOrientation,
 } from "@react-native-community/hooks";
+import Icon from "react-native-vector-icons/Feather";
+import ImageBackground from "react-native/Libraries/Image/ImageBackground";
+import { ScrollView } from "react-native-gesture-handler";
 // import { Button } from "react-native-vector-icons/Feather";
 function Item({ text, tag, img, key }) {
   const width = useDimensions().screen.width;
@@ -96,10 +99,17 @@ class Card extends Component {
       crads: [],
       modalVisible: false,
       postTitle: "",
+      post: "",
+      PostImg: "",
     };
   }
-  setModalVisible = (visible, title) => {
-    this.setState({ modalVisible: visible, postTitle: title });
+  setModalVisible = (visible, title, post, img) => {
+    this.setState({
+      modalVisible: visible,
+      postTitle: title,
+      post: post,
+      PostImg: img,
+    });
   };
 
   getImgLink = (id) => {
@@ -123,6 +133,7 @@ class Card extends Component {
                 index: index,
                 title: item.title.rendered,
                 content: item.excerpt.rendered.split("<p>")[1].split("</p>")[0],
+                post: item.content.rendered.split("<p>")[1].split("</p>")[0],
                 media: item.featured_media,
                 img: responseJson[index].content.rendered
                   .split("src=")[1]
@@ -151,7 +162,151 @@ class Card extends Component {
               }}
             >
               <View style={{ flex: 1, backgroundColor: "#1b2135ff" }}>
-                <Text style={{ color: "white" }}>{this.state.postTitle}</Text>
+                <View
+                  style={{
+                    backgroundColor: "#FFA374",
+                    width: "100%",
+                    height: 60,
+                    flexDirection: "row",
+                  }}
+                >
+                  <Icon
+                    onPress={() => this.setModalVisible(false, "", "", "")}
+                    name="chevron-left"
+                    style={{ marginTop: 13, marginLeft: 6 }}
+                    color="#ffffff"
+                    size={30}
+                  >
+                    {" "}
+                  </Icon>
+                  <Text
+                    style={{
+                      marginTop: 13,
+                      color: "white",
+                      fontSize: 18,
+                      marginLeft: 5,
+                    }}
+                  >
+                    Covid news
+                  </Text>
+                </View>
+                <ScrollView
+                  style={{
+                    backgroundColor: "#24354F",
+                    alignContent: "center",
+                    // marginRight: 0,
+                    // marginVertical: "2%",
+                    // marginHorizontal: "2%",
+                    height: "100%",
+                    paddingBottom: 10,
+                  }}
+                >
+                  <View
+                    style={{
+                      alignContent: "center",
+                      // marginRight: 0,
+                      // marginVertical: "2%",
+                      marginHorizontal: "2%",
+                      // height: "100%",
+                      // paddingBottom: 10,
+                    }}
+                  >
+                    <ImageBackground
+                      // source={require("../assets/img/6.jpg")}
+                      // fadeDuration={1000}
+                      // style={styles.cardImg}
+
+                      style={{
+                        alignContent: "center",
+                        width: "100%",
+                        height: 200,
+                        // marginRight: 0,
+                        marginTop: 5,
+                        marginVertical: "2%",
+                        marginRight: 5,
+                        borderRadius: 7,
+                        overflow: "hidden",
+                      }}
+                      source={{
+                        uri: this.state.PostImg,
+                      }}
+                    ></ImageBackground>
+                  </View>
+                  <View style={{ flexDirection: "row", paddingLeft: 7 }}>
+                    <Icon
+                      name="bookmark"
+                      color="white"
+                      size={14}
+                      style={{ marginTop: 4 }}
+                    ></Icon>
+                    <Text
+                      style={{ color: "white", marginLeft: 6, fontSize: 14 }}
+                    >
+                      Abdellatif Ahammad
+                    </Text>
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        color: "white",
+                        fontSize: 20,
+                        marginLeft: 18,
+                        marginTop: 10,
+                        color: "#C9D3F2",
+                      }}
+                    >
+                      {this.state.postTitle.toUpperCase()}
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#F0F0F2",
+                        fontSize: 14,
+                        fontWeight: "300",
+                        marginLeft: 16,
+                        marginRight: 16,
+                        marginTop: 10,
+                        marginBottom: 10,
+                        alignContent: "flex-start",
+                        textAlign: "justify",
+                        lineHeight: 23,
+                      }}
+                    >
+                      {this.state.post}
+                    </Text>
+                    <TouchableOpacity
+                      style={{
+                        marginTop: 10,
+                        width: "30%",
+                        height: 35,
+                        alignContent: "center",
+                        marginLeft: 12,
+                        // marginRight: 30,
+                        backgroundColor: "#ff6b6b",
+                        borderRadius: 40,
+                        paddingTop: 7,
+                        marginBottom: 24,
+                        flexDirection: "row",
+                      }}
+                      onPress={() => this.setModalVisible(false, "", "", "")}
+                    >
+                      <Icon
+                        name="chevrons-left"
+                        color="white"
+                        size={19}
+                        style={{ marginLeft: 12 }}
+                      ></Icon>
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          color: "white",
+                          textAlign: "center",
+                        }}
+                      >
+                        GO BACK
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </ScrollView>
               </View>
             </Modal>
 
@@ -161,7 +316,9 @@ class Card extends Component {
               data={this.state.data}
               renderItem={({ item }) => (
                 <TouchableOpacity
-                  onPress={() => this.setModalVisible(true, item.title)}
+                  onPress={() =>
+                    this.setModalVisible(true, item.title, item.post, item.img)
+                  }
                 >
                   <Item text={item.content} tag={item.title} img={item.img} />
                 </TouchableOpacity>

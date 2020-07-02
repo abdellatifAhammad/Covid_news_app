@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
 import { LineChart } from "react-native-chart-kit";
+import Icon from "react-native-vector-icons/Feather";
 
 class Chart extends Component {
   constructor(props) {
@@ -44,61 +45,134 @@ class Chart extends Component {
     return (
       <View>
         {!this.state.loading ? (
-          <LineChart
-            data={{
-              labels: [
-                this.wichDay(this.state.chartData[0].Date),
-                this.wichDay(this.state.chartData[1].Date),
-                this.wichDay(this.state.chartData[2].Date),
-                this.wichDay(this.state.chartData[3].Date),
-                this.wichDay(this.state.chartData[4].Date),
-                this.wichDay(this.state.chartData[5].Date),
-                this.wichDay(this.state.chartData[6].Date),
-              ],
+          <>
+            <LineChart
+              data={{
+                labels: [
+                  this.wichDay(this.state.chartData[0].Date),
+                  this.wichDay(this.state.chartData[1].Date),
+                  this.wichDay(this.state.chartData[2].Date),
+                  this.wichDay(this.state.chartData[3].Date),
+                  this.wichDay(this.state.chartData[4].Date),
+                  this.wichDay(this.state.chartData[5].Date),
+                  this.wichDay(this.state.chartData[6].Date),
+                ],
 
-              datasets: [
-                {
-                  data: [
-                    this.state.chartData[0].Recovered,
-                    this.state.chartData[1].Recovered,
-                    this.state.chartData[2].Recovered,
-                    this.state.chartData[3].Recovered,
-                    this.state.chartData[4].Recovered,
-                    this.state.chartData[5].Recovered,
-                    this.state.chartData[6].Recovered,
-                  ],
+                datasets: [
+                  {
+                    data: [
+                      this.state.chartData[0].Recovered,
+                      this.state.chartData[1].Recovered,
+                      this.state.chartData[2].Recovered,
+                      this.state.chartData[3].Recovered,
+                      this.state.chartData[4].Recovered,
+                      this.state.chartData[5].Recovered,
+                      this.state.chartData[6].Recovered,
+                    ],
+                  },
+                ],
+              }}
+              width={this.props.width} // from react-native
+              height={220}
+              yAxisLabel=""
+              yAxisSuffix=""
+              yAxisInterval={1} // optional, defaults to 1
+              chartConfig={{
+                backgroundColor: "#1dd1a1",
+                backgroundGradientFrom: "#1dd1a1",
+                backgroundGradientTo: "#1dd1a1",
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                style: {
+                  borderRadius: 6,
                 },
-              ],
-            }}
-            width={this.props.width} // from react-native
-            height={220}
-            yAxisLabel=""
-            yAxisSuffix=""
-            yAxisInterval={1} // optional, defaults to 1
-            chartConfig={{
-              backgroundColor: "#5363F7",
-              backgroundGradientFrom: "#81A4FD",
-              backgroundGradientTo: "#5363F7",
-              decimalPlaces: 2, // optional, defaults to 2dp
-              color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              style: {
+                propsForDots: {
+                  r: "6",
+                  strokeWidth: "2",
+                  stroke: "#10ac84",
+                },
+              }}
+              bezier
+              style={{
+                // marginVertical: 8,
+                margin: 10,
+                width: this.props.width - 20,
                 borderRadius: 6,
-              },
-              propsForDots: {
-                r: "6",
-                strokeWidth: "2",
-                stroke: "#5363F7",
-              },
-            }}
-            bezier
-            style={{
-              // marginVertical: 8,
-              margin: 10,
-              width: this.props.width - 20,
-              borderRadius: 6,
-            }}
-          />
+              }}
+            />
+
+            <View
+              style={{
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 16, padding: 10, color: "#ffffff" }}>
+                Active cases{" "}
+              </Text>
+              <Icon
+                style={{ alignContent: "center", marginVertical: 14 }}
+                name="alert-triangle"
+                color="#ffffff"
+                size={16}
+              ></Icon>
+            </View>
+            <LineChart
+              data={{
+                labels: [
+                  this.wichDay(this.state.chartData[0].Date),
+                  this.wichDay(this.state.chartData[1].Date),
+                  this.wichDay(this.state.chartData[2].Date),
+                  this.wichDay(this.state.chartData[3].Date),
+                  this.wichDay(this.state.chartData[4].Date),
+                  this.wichDay(this.state.chartData[5].Date),
+                  this.wichDay(this.state.chartData[6].Date),
+                ],
+
+                datasets: [
+                  {
+                    data: [
+                      this.state.chartData[0].Deaths,
+                      this.state.chartData[1].Deaths,
+                      this.state.chartData[2].Deaths,
+                      this.state.chartData[3].Deaths,
+                      this.state.chartData[4].Deaths,
+                      this.state.chartData[5].Deaths,
+                      this.state.chartData[6].Deaths,
+                    ],
+                  },
+                ],
+              }}
+              width={this.props.width} // from react-native
+              height={220}
+              yAxisLabel=""
+              yAxisSuffix=""
+              yAxisInterval={1} // optional, defaults to 1
+              chartConfig={{
+                backgroundColor: "#5363F7",
+                backgroundGradientFrom: "#81A4FD",
+                backgroundGradientTo: "#5363F7",
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                style: {
+                  borderRadius: 6,
+                },
+                propsForDots: {
+                  r: "6",
+                  strokeWidth: "2",
+                  stroke: "#5363F7",
+                },
+              }}
+              bezier
+              style={{
+                // marginVertical: 8,
+                margin: 10,
+                width: this.props.width - 20,
+                borderRadius: 6,
+              }}
+            />
+          </>
         ) : (
           <ActivityIndicator size="large" color="#fffff" />
         )}

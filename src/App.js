@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   card: {},
   newsText: {
     color: "#ffffff",
-    // fontFamily: "amiri",
+    // fontFamily: "SlabRegular",
     fontStyle: "normal",
     fontSize: 20,
     fontWeight: "300",
