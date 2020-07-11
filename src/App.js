@@ -161,7 +161,7 @@ export default function App() {
             size={16}
           ></Icon>
         </View>
-        <Pie width={width}></Pie>
+        {/* <Pie width={width}></Pie> */}
       </ScrollView>
     </>
   );

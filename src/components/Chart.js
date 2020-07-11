@@ -132,13 +132,13 @@ class Chart extends Component {
                 datasets: [
                   {
                     data: [
-                      this.state.chartData[0].Deaths,
-                      this.state.chartData[1].Deaths,
-                      this.state.chartData[2].Deaths,
-                      this.state.chartData[3].Deaths,
-                      this.state.chartData[4].Deaths,
-                      this.state.chartData[5].Deaths,
-                      this.state.chartData[6].Deaths,
+                      this.state.chartData[0].Active,
+                      this.state.chartData[1].Active,
+                      this.state.chartData[2].Active,
+                      this.state.chartData[3].Active,
+                      this.state.chartData[4].Active,
+                      this.state.chartData[5].Active,
+                      this.state.chartData[6].Active,
                     ],
                   },
                 ],

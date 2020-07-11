@@ -2,8 +2,8 @@
   "name": "react-only",
   "displayName": "react-only",
   "expo": {
-    "name": "react-only",
-    "slug": "expo-template-bare",
+    "name": "Covid19Morocco",
+    "slug": "covid19morocco",
     "version": "1.0.0",
     "platforms": [
       "ios",
@@ -12,6 +12,8 @@
     ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "description": "a simple app to show some statistics and corona news reading",
+    "githubUrl": "https://github.com/abdellatifAhammad/Covid_news_app/"
   }
 }
