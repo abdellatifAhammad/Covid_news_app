@@ -1,5 +1,5 @@
 ---
-title: 'Covid newa app'
+title: 'Covid news app'
 ---
 
 Covid news app
