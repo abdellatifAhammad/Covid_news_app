@@ -13,14 +13,8 @@ Covid news app
 ### the idea of the app
 > the geneare purpose is to make people seeing the latest news that I posted in a wordpress website throw this app ,also with some statistcis from Covid19 API   
 
-### 
-<!-- ## Table of Contents
-
-[TOC]
 
 ![](https://i.imgur.com/4dSIst5.png)
-
-## Beginners Guide -->
 
 > created by Abdellatif Ahammad
 
