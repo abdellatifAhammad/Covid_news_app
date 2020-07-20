@@ -1,8 +1,5 @@
-## covid 19 project app
-
-> created by Abdellatif Ahammad
 ---
-title: 'Covid newa app'
+title: 'Covid news app'
 ---
 
 Covid news app
@@ -23,6 +20,7 @@ Covid news app
 
 ## Beginners Guide -->
 
+> created by Abdellatif Ahammad
 
 ###### tags: `Templates` `Documentation`
 
