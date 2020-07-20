@@ -18,6 +18,8 @@ Covid news app
 
 [TOC]
 
+![](https://i.imgur.com/4dSIst5.png)
+
 ## Beginners Guide -->
 
 > created by Abdellatif Ahammad
